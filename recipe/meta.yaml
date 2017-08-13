@@ -36,6 +36,13 @@ about:
   license_family: BSD
   license_file: LICENSE.txt
   summary: Describing statistical models in Python using symbolic formulas
+  description: |
+    Patsy is a Python library for describing statistical models (especially
+    linear models, or models that have a linear component) and building design
+    matrices.
+  doc_url: http://patsy.readthedocs.org/en/latest/
+  doc_source_url: https://github.com/pydata/patsy/blob/master/doc/index.rst
+  dev_url: https://github.com/pydata/patsy
 
 extra:
   recipe-maintainers:
