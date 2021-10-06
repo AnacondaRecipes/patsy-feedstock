@@ -18,20 +18,28 @@ build:
 requirements:
   host:
     - python
+    - pip
     - setuptools
+    - wheel
   run:
     - python
+    # need at least numpy 1.4 for triu_indices
     - numpy >=1.4.0
-    - scipy
     - six
+    # Optional: scipy needed for spline-related functions like bs
+    - scipy
 
 test:
   imports:
     - patsy
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/pydata/patsy
-  license: BSD-2-Clause, PSF2
+  license: BSD-2-Clause AND PSF-2.0
   license_family: BSD
   license_file: LICENSE.txt
   summary: Describing statistical models in Python using symbolic formulas
