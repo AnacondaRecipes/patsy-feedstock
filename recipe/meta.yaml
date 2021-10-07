@@ -1,4 +1,4 @@
-{% set version = "0.5.1" %}
+{% set version = "0.5.2" %}
 {% set pkg_name = "patsy" %}
 
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ pkg_name[0] }}/{{ pkg_name }}/{{ pkg_name }}-{{ version }}.tar.gz
-  sha256: f115cec4201e1465cd58b9866b0b0e7b941caafec129869057405bfe5b5e3991
+  sha256: 5053de7804676aba62783dbb0f23a2b3d74e35e5bfa238b88b7cbf148a38b69d
 
 build:
   number: 0
@@ -18,20 +18,28 @@ build:
 requirements:
   host:
     - python
+    - pip
     - setuptools
+    - wheel
   run:
     - python
+    # need at least numpy 1.4 for triu_indices
     - numpy >=1.4.0
-    - scipy
     - six
+    # Optional: scipy needed for spline-related functions like bs
+    - scipy
 
 test:
   imports:
     - patsy
+  requires:
+    - pip
+  commands:
+    - pip check
 
 about:
   home: https://github.com/pydata/patsy
-  license: BSD-2-Clause, PSF2
+  license: BSD-2-Clause AND PSF-2.0
   license_family: BSD
   license_file: LICENSE.txt
   summary: Describing statistical models in Python using symbolic formulas
