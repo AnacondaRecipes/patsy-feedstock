@@ -11,18 +11,18 @@ source:
   sha256: 5053de7804676aba62783dbb0f23a2b3d74e35e5bfa238b88b7cbf148a38b69d
 
 build:
-  number: 0
+  number: 1
   script:
     - python setup.py install --single-version-externally-managed --record=record.txt
 
 requirements:
   host:
-    - python <3.10
+    - python
     - pip
     - setuptools
     - wheel
   run:
-    - python <3.10
+    - python
     # need at least numpy 1.4 for triu_indices
     - numpy >=1.4.0
     - six
@@ -34,7 +34,6 @@ test:
     - patsy
   requires:
     - pip
-    - python <3.10
   commands:
     - pip check
 
