@@ -27,7 +27,7 @@ requirements:
     - numpy >=1.4.0
     - six
     # Optional: scipy needed for spline-related functions like bs 
-    - scipy
+    #- scipy
 
 test:
   imports:
