@@ -26,14 +26,14 @@ requirements:
     # need at least numpy 1.4 for triu_indices
     - numpy >=1.4.0
     - six
-    # Optional: scipy needed for spline-related functions like bs 
-    #- scipy
 
 test:
   imports:
     - patsy
   requires:
     - pip
+    # Optional: scipy needed for spline-related functions like bs 
+    #- scipy
   commands:
     - pip check
 
