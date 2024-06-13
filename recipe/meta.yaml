@@ -13,7 +13,7 @@ source:
 build:
   number: 0
   script:
-    - {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
 
 requirements:
   host:
