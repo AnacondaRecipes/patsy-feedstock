@@ -1,4 +1,4 @@
-{% set version = "0.5.3" %}
+{% set version = "0.5.6" %}
 {% set pkg_name = "patsy" %}
 
 
@@ -8,12 +8,12 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ pkg_name[0] }}/{{ pkg_name }}/{{ pkg_name }}-{{ version }}.tar.gz
-  sha256: bdc18001875e319bc91c812c1eb6a10be4bb13cb81eb763f466179dca3b67277
+  sha256: 95c6d47a7222535f84bff7f63d7303f2e297747a598db89cf5c67f0c0c7d2cdb
 
 build:
   number: 0
   script:
-    - {{ PYTHON }} setup.py install --single-version-externally-managed --record=record.txt
+    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
 
 requirements:
   host:
