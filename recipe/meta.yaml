@@ -1,4 +1,4 @@
-{% set version = "0.5.6" %}
+{% set version = "1.0.1" %}
 {% set pkg_name = "patsy" %}
 
 
@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ pkg_name[0] }}/{{ pkg_name }}/{{ pkg_name }}-{{ version }}.tar.gz
-  sha256: 95c6d47a7222535f84bff7f63d7303f2e297747a598db89cf5c67f0c0c7d2cdb
+  sha256: e786a9391eec818c054e359b737bbce692f051aee4c661f4141cc88fb459c0c4
 
 build:
   number: 0
@@ -23,18 +23,14 @@ requirements:
     - wheel
   run:
     - python
-    # need at least numpy 1.4 for triu_indices
-    - numpy >=1.4.0
-    - six
+    - numpy >=1.4
 
 test:
   imports:
     - patsy
   requires:
     - pip
-    # Optional: scipy needed for spline-related functions like bs 
-    #- scipy
-  commands:
+   commands:
     - pip check
 
 about:
