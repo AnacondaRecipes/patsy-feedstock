@@ -12,8 +12,7 @@ source:
 
 build:
   number: 0
-  script:
-    - {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
+  script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
 
 requirements:
   host:
@@ -30,7 +29,7 @@ test:
     - patsy
   requires:
     - pip
-   commands:
+  commands:
     - pip check
 
 about:
