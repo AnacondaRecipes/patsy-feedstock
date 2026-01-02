@@ -1,12 +1,12 @@
 {% set version = "1.0.2" %}
-{% set pkg_name = "patsy" %}
+{% set name = "patsy" %}
 
 package:
-  name: {{ pkg_name }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.org/packages/source/{{ pkg_name[0] }}/{{ pkg_name }}/{{ pkg_name }}-{{ version }}.tar.gz
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: cdc995455f6233e90e22de72c37fcadb344e7586fb83f06696f54d92f8ce74c0
 
 build:
@@ -25,12 +25,17 @@ requirements:
     - numpy >=1.4
 
 test:
+  source_files:
+    - patsy
   imports:
     - patsy
   requires:
     - pip
+    - pytest
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v patsy
 
 about:
   home: https://github.com/pydata/patsy
