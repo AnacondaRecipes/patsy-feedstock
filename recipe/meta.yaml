@@ -1,18 +1,18 @@
-{% set version = "1.0.1" %}
-{% set pkg_name = "patsy" %}
-
+{% set version = "1.0.2" %}
+{% set name = "patsy" %}
 
 package:
-  name: {{ pkg_name }}
+  name: {{ name }}
   version: {{ version }}
 
 source:
-  url: https://pypi.io/packages/source/{{ pkg_name[0] }}/{{ pkg_name }}/{{ pkg_name }}-{{ version }}.tar.gz
-  sha256: e786a9391eec818c054e359b737bbce692f051aee4c661f4141cc88fb459c0c4
+  url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: cdc995455f6233e90e22de72c37fcadb344e7586fb83f06696f54d92f8ce74c0
 
 build:
   number: 0
   script: {{ PYTHON }} -m pip install . --no-deps --no-build-isolation
+  skip: true  # [py<36]
 
 requirements:
   host:
@@ -25,12 +25,23 @@ requirements:
     - numpy >=1.4
 
 test:
+  # downstreams:
+    # - category_encoders
+    # - pymc3
+    # - scikit-bio
+    # - statsmodels
+  source_files:
+    - patsy
   imports:
     - patsy
   requires:
     - pip
+    - pytest
+    - scipy
   commands:
     - pip check
+    - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
+    - pytest -v patsy
 
 about:
   home: https://github.com/pydata/patsy
