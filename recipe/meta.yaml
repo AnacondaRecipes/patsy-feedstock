@@ -25,6 +25,11 @@ requirements:
     - numpy >=1.4
 
 test:
+  # downstreams:
+    # - category_encoders
+    # - pymc3
+    # - scikit-bio
+    # - statsmodels
   source_files:
     - patsy
   imports:
@@ -32,6 +37,8 @@ test:
   requires:
     - pip
     - pytest
+    - scipy
+
   commands:
     - pip check
     - python -c "from importlib.metadata import version; assert(version('{{ name }}')=='{{ version }}')"
